@@ -1,0 +1,191 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: var(--s-5);
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-5) var(--s-6);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  text-wrap: balance;
+  max-width: 100%;
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  gap: var(--s-2);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: var(--s-1);
+}
+
+.tab {
+  flex: none;
+  min-height: 44px;
+  padding: 0 var(--s-4);
+  border: 0;
+  border-radius: var(--radius-row);
+  background: transparent;
+  color: var(--paper-ink-soft);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.tab:hover {
+  color: var(--paper-ink);
+}
+
+.tab[aria-selected='true'] {
+  background: var(--paper-ink);
+  color: var(--paper);
+}
+
+.monthSelect {
+  position: relative;
+  display: none;
+  justify-self: stretch;
+  min-width: 0;
+}
+
+.monthSelect select {
+  width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
+  min-height: 48px;
+  padding: 0 calc(var(--s-4) + 28px) 0 var(--s-4);
+  border: 0;
+  border-radius: var(--radius-row);
+  background: var(--paper-ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  text-transform: uppercase;
+  appearance: none;
+  cursor: pointer;
+}
+
+.monthSelect option {
+  text-transform: none;
+  color: var(--paper-ink);
+  background: var(--paper);
+}
+
+.monthSelectIcon {
+  position: absolute;
+  right: var(--s-4);
+  top: 50%;
+  translate: 0 -50%;
+  color: var(--paper);
+  pointer-events: none;
+}
+
+.selectSkeleton {
+  height: 48px;
+  border-radius: var(--radius-row);
+  background: color-mix(in srgb, var(--paper-ink) 8%, transparent);
+}
+
+.tabSkeleton {
+  width: 120px;
+  height: 44px;
+  border-radius: var(--radius-row);
+  background: color-mix(in srgb, var(--paper-ink) 8%, transparent);
+}
+
+.board {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-5);
+  width: 100%;
+  padding: var(--s-5) var(--s-6);
+  border-radius: var(--radius-board);
+  background: var(--board);
+  color: var(--board-ink);
+  overflow: clip;
+}
+
+.progress {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--board-ink-soft);
+  opacity: 0;
+  transform-origin: left;
+}
+
+.progress[data-active] {
+  opacity: 1;
+  animation: progress 1.4s var(--ease) infinite;
+}
+
+@keyframes progress {
+  0% {
+    transform: translateX(-100%) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(100%) scaleX(0.4);
+  }
+}
+
+.boardHead {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin: 0;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  color: var(--board-ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.boardHead > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status[data-status='disconnected'] {
+  color: var(--danger);
+}
+
+.notice {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--board-ink-soft);
+}
+
+@media (max-width: 759px) {
+  .page {
+    padding: var(--s-6) var(--s-3) var(--s-5);
+    gap: var(--s-4);
+  }
+
+  .tabs {
+    display: none;
+  }
+
+  .monthSelect {
+    display: block;
+  }
+
+  .board {
+    padding: var(--s-4) var(--s-3);
+    border-radius: var(--radius-row);
+    overflow: visible;
+  }
+}

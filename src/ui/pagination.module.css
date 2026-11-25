@@ -1,0 +1,65 @@
+.pagination {
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-1);
+}
+
+.arrow,
+.page {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--board-ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.arrow:hover:not(:disabled),
+.page:hover:not([aria-current]) {
+  background: var(--board-raised);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+}
+
+.page[aria-current='page'] {
+  background: var(--row);
+  color: var(--row-ink);
+}
+
+.page[data-loading] {
+  animation: pulse 0.9s var(--ease) infinite alternate;
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0.45;
+  }
+}
+
+.gap {
+  width: 40px;
+  text-align: center;
+  color: var(--board-ink-soft);
+}
+
+@media (max-width: 480px) {
+  .arrow,
+  .page {
+    width: 40px;
+    height: 44px;
+  }
+
+  .pagination {
+    gap: 0;
+  }
+}

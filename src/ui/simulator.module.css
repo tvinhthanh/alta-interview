@@ -1,0 +1,89 @@
+.panel {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--paper-ink) 15%, transparent);
+  border-radius: var(--radius-row);
+  font-size: var(--text-sm);
+}
+
+.summary {
+  padding: var(--s-3) var(--s-4);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--paper-ink-soft);
+}
+
+.body {
+  display: grid;
+  gap: var(--s-4);
+  padding: 0 var(--s-4) var(--s-4);
+}
+
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+
+.group legend {
+  margin-bottom: var(--s-2);
+  font-weight: 600;
+}
+
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+}
+
+.option {
+  position: relative;
+}
+
+.option input {
+  position: absolute;
+  opacity: 0;
+}
+
+.option span {
+  display: inline-block;
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--radius-row);
+  border: 1px solid color-mix(in srgb, var(--paper-ink) 20%, transparent);
+  cursor: pointer;
+}
+
+.option input:checked + span {
+  background: var(--paper-ink);
+  color: var(--paper);
+  border-color: var(--paper-ink);
+}
+
+.option input:focus-visible + span {
+  box-shadow: var(--focus-ring);
+}
+
+.hint {
+  margin: 0;
+  color: var(--paper-ink-soft);
+  font-size: var(--text-xs);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+
+.actions button {
+  min-height: 40px;
+  padding: 0 var(--s-4);
+  border: 1px solid color-mix(in srgb, var(--paper-ink) 20%, transparent);
+  border-radius: var(--radius-row);
+  background: transparent;
+}
+
+.actions button:hover {
+  background: color-mix(in srgb, var(--paper-ink) 8%, transparent);
+}

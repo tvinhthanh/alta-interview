@@ -1,0 +1,80 @@
+.wrap {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-2);
+}
+
+.label {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--board-ink-soft);
+}
+
+/* Giữ cố định chiều cao cho mọi trạng thái (đang tải, lỗi, chưa có hạng, có hạng). */
+.slot {
+  width: min(100%, 420px);
+  min-height: calc(var(--row-height) + var(--s-1) + 20px);
+}
+
+.card {
+  display: grid;
+  gap: var(--s-1);
+  transition: opacity 0.2s var(--ease);
+}
+
+.card[data-stale] {
+  opacity: 0.55;
+}
+
+.note {
+  display: grid;
+  place-items: center;
+  min-height: var(--row-height);
+  margin: 0;
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--radius-row);
+  background: var(--board-raised);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--board-ink-soft);
+}
+
+.link,
+.here {
+  justify-self: end;
+  height: 20px;
+  font-size: var(--text-xs);
+}
+
+.here {
+  margin: 0;
+  color: var(--board-ink-soft);
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  justify-self: end;
+  color: var(--board-ink-soft);
+  font-size: var(--text-xs);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:disabled {
+  opacity: 0.5;
+}
+
+@media (max-width: 759px) {
+  .wrap {
+    position: sticky;
+    bottom: var(--s-3);
+    z-index: 1;
+    padding: var(--s-3);
+    border-radius: var(--radius-row);
+    background: var(--board-raised);
+    box-shadow: 0 -8px 24px rgb(0 0 0 / 0.3);
+  }
+}
